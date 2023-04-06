@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import './index.css'
-const author = "Dav Pilkey"
-const imageAlt = "Dog Man: Twenty Thousand Fleas Under the Sea"
 
 const inlineHeadStyle =
 {
@@ -12,20 +10,37 @@ const inlineHeadStyle =
     marginTop: '0.5rem'
 }
 
+const books = [{
+    title: "Atomic Habits: The life-changing",
+    image: "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/51-nXsSRfZL._SY264_BO1,204,203,200_QL40_FMwebp_.jpg",
+    author: "James Clear",
+    id:1
+},
+{
+    title: "Ikigai: The Japanese secret to a long and happy life",
+    image: "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/51xwGSNX-EL._SY264_BO1,204,203,200_QL40_FMwebp_.jpg",
+    author: "Hector Garcia",
+    id:2
+},
+{
+    title: "The Psychology of Money",
+    image: "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41r6F2LRf8L._SY264_BO1,204,203,200_QL40_FMwebp_.jpg",
+    author: "Morgan Housel",
+    id:3
+}]
+
 const BookList = () => {
     return <section className="booklist">
-        <Book title="Atomic Habits: The life-changing" image="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/51-nXsSRfZL._SY264_BO1,204,203,200_QL40_FMwebp_.jpg" author="James Clear" />
-        <Book title="Ikigai: The Japanese secret to a long and happy life" image="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/51xwGSNX-EL._SY264_BO1,204,203,200_QL40_FMwebp_.jpg" author="Hector Garcia" />
-        <Book title="The Psychology of Money" image="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41r6F2LRf8L._SY264_BO1,204,203,200_QL40_FMwebp_.jpg" author="Morgan Housel" />
-
-    </section>
+       
+        {books.map(({title, author, image, id }) => {
+            return <Book title={title} author={author} image={image} key={id}/>
+        })}</section> 
 }
-const Book = (props) => {
+const Book = ({ title, author, image }) => {
     return <article className="books">
-        <img src={props.image} alt={imageAlt}></img>
-        <h2>{props.title}</h2>
-        <h4 style={inlineHeadStyle}>{props.author}</h4>
-
+        <img src={image}></img>
+        <h2>{title}</h2>
+        <h4 style={inlineHeadStyle}>{author}</h4>
 
     </article>
 }

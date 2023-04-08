@@ -27,16 +27,16 @@ const books = [{
     image: "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41r6F2LRf8L._SY264_BO1,204,203,200_QL40_FMwebp_.jpg",
     author: "Morgan Housel",
     id:3
-}]
+    }]
 
 const BookList = () => {
     return <section className="booklist">
-       
-        {books.map(({title, author, image, id }) => {
-            return <Book title={title} author={author} image={image} key={id}/>
-        })}</section> 
+        {books.map((book) => {
+            return <Book {...book} />
+        })}
+    </section>
 }
-const Book = ({ title, author, image }) => {
+const Book = ({title, author,image}) => {
     return <article className="books">
         <img src={image}></img>
         <h2>{title}</h2>
